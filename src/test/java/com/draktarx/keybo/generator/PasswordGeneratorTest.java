@@ -3,6 +3,8 @@ package com.draktarx.keybo.generator;
 import com.draktarx.keybo.exceptions.PasswordGeneratorException;
 import org.junit.jupiter.api.Test;
 
+import java.util.regex.Pattern;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -17,7 +19,7 @@ public class PasswordGeneratorTest {
         String password = generator.generatePassword();
 
         assertNotNull(password);
-        //TODO: assertTrue(Pattern.matches("", password));
+        assertTrue(Pattern.matches("[a-zA-Z0-9\\p{Punct}]*", password));
     }
 
     @Test
@@ -29,7 +31,7 @@ public class PasswordGeneratorTest {
         String password = generator.generatePassword();
 
         assertNotNull(password);
-        // TODO: assertTrue(Pattern.matches("", password));
+        assertTrue(Pattern.matches("([A-Z]?[a-z]+\\d?-?)+", password));
     }
 
     @Test
